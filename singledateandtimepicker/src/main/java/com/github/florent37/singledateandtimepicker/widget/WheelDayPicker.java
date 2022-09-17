@@ -49,12 +49,8 @@ public class WheelDayPicker extends WheelPicker<DateWithLabel> {
 
     @Override
     protected DateWithLabel initDefault() {
-        return new DateWithLabel(getTodayText(), new Date());
-    }
-
-    @NonNull
-    private String getTodayText() {
-        return getLocalizedString(R.string.picker_today);
+        Date today = new Date();
+        return new DateWithLabel(getFormattedValue(today), today, true);
     }
 
     @Override
@@ -79,19 +75,22 @@ public class WheelDayPicker extends WheelPicker<DateWithLabel> {
         for (int i = startDayOffset; i < 0; ++i) {
             instance.add(Calendar.DAY_OF_MONTH, 1);
             Date date = instance.getTime();
-            days.add(new DateWithLabel(getFormattedValue(date), date));
+            days.add(new DateWithLabel(getFormattedValue(date), date, false));
         }
 
         //today
-        days.add(new DateWithLabel(getTodayText(), new Date()));
+        Date today = new Date();
+        days.add(new DateWithLabel(getFormattedValue(today), today, true));
 
         instance = Calendar.getInstance();
         instance.setTimeZone(dateHelper.getTimeZone());
 
-        for (int i = 0; i < dayCount; ++i) {
-            instance.add(Calendar.DATE, 1);
-            Date date = instance.getTime();
-            days.add(new DateWithLabel(getFormattedValue(date), date));
+        if (showOnlyFutureDates) {
+            for (int i = 0; i < dayCount; ++i) {
+                instance.add(Calendar.DATE, 1);
+                Date date = instance.getTime();
+                days.add(new DateWithLabel(getFormattedValue(date), date, false));
+            }
         }
 
         return days;
@@ -133,25 +132,24 @@ public class WheelDayPicker extends WheelPicker<DateWithLabel> {
         final List<DateWithLabel> data = adapter.getData();
 
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).label.equals(getTodayText())) {
+            if (data.get(i).isToday) {
                 todayPosition = i;
                 break;
             }
         }
 
-        if (getTodayText().equals(itemText)) {
-            date = todayCalendar.getTime();
-        } else {
+        if (todayPosition <= -1 || !data.get(todayPosition).label.equals(itemText)) {
             todayCalendar.add(Calendar.DAY_OF_YEAR, (itemPosition - todayPosition));
-            date = todayCalendar.getTime();
         }
+        date = todayCalendar.getTime();
+
         return date;
     }
 
     public void setTodayText(DateWithLabel today) {
         final List<DateWithLabel> data = adapter.getData();
         for (int i = 0; i < data.size(); i++) {
-            if (data.get(i).label.equals(getTodayText())) {
+            if (data.get(i).isToday) {
                 adapter.getData().set(i, today);
                 notifyDatasetChanged();
             }

@@ -1,0 +1,2 @@
+build:
+	./gradlew singledateandtimepicker:assembleRelease

@@ -355,7 +355,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
     }
 
     public void setTypeface(Typeface typeface) {
-        if(typeface == null) return;
+        if (typeface == null) return;
         for (WheelPicker picker : pickers) {
             picker.setTypeface(typeface);
         }
@@ -363,7 +363,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
 
     private void setFontToAllPickers(int resourceId) {
         if (resourceId > 0) {
-            for (int i = 0; i< pickers.size();i++) {
+            for (int i = 0; i < pickers.size(); i++) {
                 pickers.get(i).setTypeface(ResourcesCompat.getFont(getContext(), resourceId));
             }
         }
@@ -537,7 +537,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
             calendar.setTimeZone(dateHelper.getTimeZone());
             calendar.setTime(date);
             this.defaultDate = calendar.getTime();
-            
+
             updateDaysOfMonth(calendar);
 
             for (WheelPicker picker : pickers) {
@@ -620,7 +620,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SingleDateAndTimePicker);
 
         final Resources resources = getResources();
-        setTodayText(new DateWithLabel(a.getString(R.styleable.SingleDateAndTimePicker_picker_todayText), new Date()));
+        setTodayText(new DateWithLabel(a.getString(R.styleable.SingleDateAndTimePicker_picker_todayText), new Date(), true));
         setTextColor(a.getColor(R.styleable.SingleDateAndTimePicker_picker_textColor, ContextCompat.getColor(context, R.color.picker_default_text_color)));
         setSelectedTextColor(a.getColor(R.styleable.SingleDateAndTimePicker_picker_selectedTextColor, ContextCompat.getColor(context, R.color.picker_default_selected_text_color)));
         setSelectorColor(a.getColor(R.styleable.SingleDateAndTimePicker_picker_selectorColor, ContextCompat.getColor(context, R.color.picker_default_selector_color)));
@@ -644,8 +644,8 @@ public class SingleDateAndTimePicker extends LinearLayout {
         setDisplayYears(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_displayYears, displayYears));
         setDisplayDaysOfMonth(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_displayDaysOfMonth, displayDaysOfMonth));
         setDisplayMonthNumbers(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_displayMonthNumbers, monthPicker.displayMonthNumbers()));
-        setFontToAllPickers(a.getResourceId(R.styleable.SingleDateAndTimePicker_fontFamily,0));
-        setFontToAllPickers(a.getResourceId(R.styleable.SingleDateAndTimePicker_android_fontFamily,0));
+        setFontToAllPickers(a.getResourceId(R.styleable.SingleDateAndTimePicker_fontFamily, 0));
+        setFontToAllPickers(a.getResourceId(R.styleable.SingleDateAndTimePicker_android_fontFamily, 0));
         String monthFormat = a.getString(R.styleable.SingleDateAndTimePicker_picker_monthFormat);
         setMonthFormat(TextUtils.isEmpty(monthFormat) ? WheelMonthPicker.MONTH_FORMAT : monthFormat);
         setTextAlign(a.getInt(R.styleable.SingleDateAndTimePicker_picker_textAlign, ALIGN_CENTER));

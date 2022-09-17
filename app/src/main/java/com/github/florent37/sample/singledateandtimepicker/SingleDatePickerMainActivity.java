@@ -1,6 +1,7 @@
 package com.github.florent37.sample.singledateandtimepicker;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,6 @@ public class SingleDatePickerMainActivity extends AppCompatActivity {
     }
 
     private void display(String toDisplay) {
-        Toast.makeText(this, toDisplay, Toast.LENGTH_SHORT).show();
+        Log.i("", toDisplay);
     }
 }

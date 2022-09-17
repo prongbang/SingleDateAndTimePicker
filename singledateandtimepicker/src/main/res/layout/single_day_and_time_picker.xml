@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/picker_default_divider_height"
             android:layout_alignParentTop="true"
-            android:background="@drawable/picker_default_divider"/>
+            android:background="@drawable/picker_default_divider" />
 
         <View
             android:id="@+id/picker_divider_2"

@@ -28,17 +28,17 @@
     <!-- divider color is overridden with picker_default_divider_color in the app-projcet, giving us the top+bottom divider around Today  -->
     <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
         android:id="@+id/single_day_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        app:fontFamily="@font/dinot_bold"
         app:picker_curved="true"
         app:picker_cyclic="false"
-        app:picker_dayCount="31"
+        app:picker_dayCount="5"
         app:picker_itemSpacing="6dp"
-        app:picker_mustBeOnFuture="true"
+        app:picker_mustBeOnFuture="false"
         app:picker_selectorColor="@android:color/transparent"
         app:picker_textAlign="center"
-        app:picker_visibleItemCount="9"
-        app:fontFamily="@font/dinot_bold"/>
+        app:picker_visibleItemCount="7" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,13 +51,13 @@
 
     <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
         android:id="@+id/single_day_picker2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
         app:picker_curved="true"
         app:picker_curvedMaxAngle="45"
         app:picker_cyclic="true"
         app:picker_dayCount="365"
-        app:picker_itemSpacing="9dp"
+        app:picker_itemSpacing="6dp"
         app:picker_mustBeOnFuture="false"
         app:picker_textAlign="center"
         app:picker_visibleItemCount="9" />

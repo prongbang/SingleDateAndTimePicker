@@ -7,10 +7,12 @@ import java.util.Date;
 public class DateWithLabel {
     public final String label;
     public final Date date;
+    public final boolean isToday;
 
-    public DateWithLabel(String label, Date date) {
+    public DateWithLabel(String label, Date date, boolean isToday) {
         this.label = label;
         this.date = date;
+        this.isToday = isToday;
         if (date == null) {
             throw new IllegalArgumentException("null value provided. " + "label=[" + label + "], date=[" + date + "]");
         }

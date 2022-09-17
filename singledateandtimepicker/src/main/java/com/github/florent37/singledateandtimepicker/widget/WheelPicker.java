@@ -737,7 +737,7 @@ public abstract class WheelPicker<V> extends View {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof DateWithLabel) {
                 DateWithLabel dwl = (DateWithLabel) list.get(i);
-                if (dwl.label.equals(getLocalizedString(R.string.picker_today))) {
+                if (dwl.isToday) {
                     return i;
                 }
             }

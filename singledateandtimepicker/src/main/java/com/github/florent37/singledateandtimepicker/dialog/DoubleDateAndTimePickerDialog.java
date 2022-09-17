@@ -125,8 +125,8 @@ public class DoubleDateAndTimePickerDialog extends BaseDialog {
             titleLayout.setVisibility(View.GONE);
         }
 
-        pickerTab0.setTodayText(new DateWithLabel(todayText, new Date()));
-        pickerTab1.setTodayText(new DateWithLabel(todayText, new Date()));
+        pickerTab0.setTodayText(new DateWithLabel(todayText, new Date(), true));
+        pickerTab1.setTodayText(new DateWithLabel(todayText, new Date(), true));
 
         final View sheetContentLayout = view.findViewById(R.id.sheetContentLayout);
         if (sheetContentLayout != null) {

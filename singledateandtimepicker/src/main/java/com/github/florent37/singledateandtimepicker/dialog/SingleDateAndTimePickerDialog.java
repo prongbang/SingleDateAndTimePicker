@@ -130,7 +130,7 @@ public class SingleDateAndTimePickerDialog extends BaseDialog {
             }
         }
 
-        picker.setTodayText(new DateWithLabel(todayText, new Date()));
+        picker.setTodayText(new DateWithLabel(todayText, new Date(), true));
 
         final View pickerTitleHeader = view.findViewById(R.id.pickerTitleHeader);
         if (mainColor != null && pickerTitleHeader != null) {

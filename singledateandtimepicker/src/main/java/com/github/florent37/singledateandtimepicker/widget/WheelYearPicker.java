@@ -9,6 +9,7 @@ import com.github.florent37.singledateandtimepicker.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -42,12 +43,7 @@ public class WheelYearPicker extends WheelPicker<String> {
 
     @Override
     protected String initDefault() {
-        return getTodayText();
-    }
-
-    @NonNull
-    private String getTodayText() {
-        return getLocalizedString(R.string.picker_today);
+        return getFormattedValue(new Date());
     }
 
     @Override
